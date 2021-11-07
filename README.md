@@ -1,3 +1,15 @@
+# Contact Easy Saver
+
+This project helps in saving and easily keeping track of contacts
+
+The Frontend is built with React
+
+The Backend is built with Golang. For more info about the backend, go to [Contact-Saver](https://github.com/Ad3bay0c/ContactSaver)
+
+Contributors:
+
+- Clinton Adedeji [@Ad3bay0c](https://github.com/Ad3bay0c)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
