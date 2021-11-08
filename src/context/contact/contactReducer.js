@@ -2,7 +2,9 @@ import React from "react";
 import {
   ADD_CONTACT,
   CLEAR_CURRENT,
+  CLEAR_FILTER,
   DELETE_CONTACT,
+  FILTER_CONTACTS,
   SET_CURRENT,
   UPDATE_CONTACT,
 } from "../type";
@@ -39,6 +41,19 @@ const contactReducer = (state, action) => {
         ),
         current: null,
       };
+    case FILTER_CONTACTS:
+      return {
+        ...state,
+        filtered: state.contacts.filter((contact) => {
+          const regexp = new RegExp(`${action.payload}`, "gi");
+          return contact.name.match(regexp) || contact.email.match(regexp);
+        }),
+      };
+      case CLEAR_FILTER:
+        return {
+          ...state,
+          filtered: null
+        }
     default:
       return state;
   }
