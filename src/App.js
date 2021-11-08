@@ -7,6 +7,7 @@ import About from "./component/pages/About";
 import Home from "./component/pages/Home";
 import ContactState from "./context/contact/contactState";
 import AuthState from "./context/auth/authState";
+import Register from "./component/auth/Register";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/reegister" element={<Register />} />
               </Routes>
             </div>
           </Fragment>
