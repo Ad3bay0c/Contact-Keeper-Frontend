@@ -17,7 +17,7 @@ const Register = () => {
     e.preventDefault();
     if (password !== password2) {
     }
-    console.log("Register Completed")
+    console.log("Register Completed");
   };
   return (
     <div className="form-container">
