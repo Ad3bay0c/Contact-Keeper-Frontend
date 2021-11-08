@@ -8,6 +8,7 @@ import Home from "./component/pages/Home";
 import ContactState from "./context/contact/contactState";
 import AuthState from "./context/auth/authState";
 import Register from "./component/auth/Register";
+import Login from "./component/auth/Login";
 
 const App = () => {
   return (
@@ -20,7 +21,8 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/reegister" element={<Register />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
               </Routes>
             </div>
           </Fragment>
