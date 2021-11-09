@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ADD_CONTACT,
   CLEAR_CURRENT,
@@ -49,11 +48,11 @@ const contactReducer = (state, action) => {
           return contact.name.match(regexp) || contact.email.match(regexp);
         }),
       };
-      case CLEAR_FILTER:
-        return {
-          ...state,
-          filtered: null
-        }
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null,
+      };
     default:
       return state;
   }
