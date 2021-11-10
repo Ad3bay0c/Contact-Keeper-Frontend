@@ -60,11 +60,7 @@ const AuthState = (props) => {
       },
     };
     try {
-      const res = await axios.post(
-        "http://localhost:2500/api/auth/login",
-        formData,
-        config
-      );
+      const res = await axios.post("/api/auth/login", formData, config);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data.data,
@@ -98,7 +94,7 @@ const AuthState = (props) => {
       SetAuthToken(localStorage.token);
     }
     try {
-      const res = await axios.get("http://localhost:2500/api/user");
+      const res = await axios.get("/api/user");
       dispatch({
         type: USER_LOADED,
         payload: res.data.user,
