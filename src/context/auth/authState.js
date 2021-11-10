@@ -60,7 +60,7 @@ const AuthState = (props) => {
       },
     };
     try {
-      const res = await axios.post("/api/auth/login", formData, config);
+      const res = await axios.post("https://contact-saver.herokuapp.com/api/auth/login", formData, config);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data.data,

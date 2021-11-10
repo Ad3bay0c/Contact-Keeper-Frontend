@@ -28,7 +28,9 @@ const ContactState = (props) => {
   // Get Contacts
   const GetContacts = async (contact) => {
     try {
-      const res = await axios.get("/api/user/contact");
+      const res = await axios.get(
+        "https://contact-saver.herokuapp.com/api/user/contact"
+      );
       dispatch({
         type: GET_CONTACT,
         payload: res.data.data,
@@ -49,7 +51,11 @@ const ContactState = (props) => {
       },
     };
     try {
-      const res = await axios.post("/api/user/contact", contact, config);
+      const res = await axios.post(
+        "https://contact-saver.herokuapp.com/api/user/contact",
+        contact,
+        config
+      );
       dispatch({
         type: ADD_CONTACT,
         payload: res.data.data,
@@ -69,7 +75,11 @@ const ContactState = (props) => {
       },
     };
     try {
-      await axios.put(`/api/user/contact/${contact.id}`, contact, config);
+      await axios.put(
+        `https://contact-saver.herokuapp.com/api/user/contact/${contact.id}`,
+        contact,
+        config
+      );
       dispatch({
         type: UPDATE_CONTACT,
         payload: contact,
@@ -84,7 +94,9 @@ const ContactState = (props) => {
   //Delete Contact
   const DeleteContact = async (id) => {
     try {
-      await axios.delete(`/api/user/contact/${id}`);
+      await axios.delete(
+        `https://contact-saver.herokuapp.com/api/user/contact/${id}`
+      );
       dispatch({
         type: DELETE_CONTACT,
         payload: id,
