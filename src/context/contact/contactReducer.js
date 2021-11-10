@@ -1,5 +1,6 @@
 import {
   ADD_CONTACT,
+  CLEAR_CONTACT,
   CLEAR_CURRENT,
   CLEAR_FILTER,
   CONTACT_ERROR,
@@ -31,6 +32,14 @@ const contactReducer = (state, action) => {
           (contact) => contact.id !== action.payload
         ),
         loading: false,
+      };
+    case CLEAR_CONTACT:
+      return {
+        ...state,
+        contacts: null,
+        error: null,
+        current: null,
+        filtered: null,
       };
     case SET_CURRENT:
       return {
