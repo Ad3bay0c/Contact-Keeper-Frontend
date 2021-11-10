@@ -28,7 +28,7 @@ const ContactState = (props) => {
   // Get Contacts
   const GetContacts = async (contact) => {
     try {
-      const res = await axios.get("http://localhost:2500/api/user/contacts");
+      const res = await axios.get("/api/user/contact");
       dispatch({
         type: GET_CONTACT,
         payload: res.data.data,
@@ -49,14 +49,30 @@ const ContactState = (props) => {
       },
     };
     try {
-      const res = await axios.post(
-        "http://localhost:2500/api/user/contacts",
-        contact,
-        config
-      );
+      const res = await axios.post("/api/user/contact", contact, config);
       dispatch({
         type: ADD_CONTACT,
         payload: res.data.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: CONTACT_ERROR,
+        payload: err,
+      });
+    }
+  };
+  //Update Contact
+  const UpdateContact = async (contact) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      await axios.put(`/api/user/contact/${contact.id}`, contact, config);
+      dispatch({
+        type: UPDATE_CONTACT,
+        payload: contact,
       });
     } catch (err) {
       dispatch({
@@ -65,19 +81,10 @@ const ContactState = (props) => {
       });
     }
   };
-  //Update Contact
-  const UpdateContact = (contact) => {
-    dispatch({
-      type: UPDATE_CONTACT,
-      payload: contact,
-    });
-  };
   //Delete Contact
   const DeleteContact = async (id) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:2500/api/user/contact/${id}`
-      );
+      await axios.delete(`/api/user/contact/${id}`);
       dispatch({
         type: DELETE_CONTACT,
         payload: id,
