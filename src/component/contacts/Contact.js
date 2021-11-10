@@ -7,13 +7,16 @@ import ContactItem from "./ContactItem";
 const Contact = () => {
   const contactContext = useContext(ContactContext);
 
-  const { contacts, filtered, GetContacts, laoding } = contactContext;
+  const { contacts, filtered, GetContacts, loading } = contactContext;
 
   useEffect(() => {
-    GetContacts()
+    GetContacts();
     // eslint-disable-next-line
   }, []);
-  if (contacts !== null && contacts.length === 0 && !loading) {
+  if (
+    (contacts === null && !loading) ||
+    (contacts !== null && !loading && contacts.length === 0)
+  ) {
     return <h4>Please add a new contact</h4>;
   }
   return (
@@ -31,11 +34,7 @@ const Contact = () => {
                 </CSSTransition>
               ))
             : contacts.map((contact) => (
-                <CSSTransition
-                  key={contact._id}
-                  timeout={500}
-                  classNames="item"
-                >
+                <CSSTransition key={contact.id} timeout={500} classNames="item">
                   <ContactItem contact={contact} />
                 </CSSTransition>
               ))}
