@@ -73,11 +73,21 @@ const ContactState = (props) => {
     });
   };
   //Delete Contact
-  const DeleteContact = (id) => {
-    dispatch({
-      type: DELETE_CONTACT,
-      payload: id,
-    });
+  const DeleteContact = async (id) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:2500/api/user/contact/${id}`
+      );
+      dispatch({
+        type: DELETE_CONTACT,
+        payload: id,
+      });
+    } catch (err) {
+      dispatch({
+        type: CONTACT_ERROR,
+        payload: err.response.data.error,
+      });
+    }
   };
   //Clear Contacts
   const ClearContacts = () => {
